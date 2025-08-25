@@ -1,145 +1,162 @@
-<!--
-  Plantilla de portafolio para Juanda099
-  Instrucciones:
-  1) Este archivo se debe llamar index.html y estar en el repo Juanda099.github.io
-  2) GitHub Pages lo publicará en https://Juanda099.github.io
-  3) Puedes personalizar nombre, bio, correo y enlaces de contacto.
--->
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Portafolio — Juanda099</title>
-  <meta name="description" content="Portafolio de proyectos de Juanda099">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio - Juanda099</title>
   <style>
-    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;--accent:#38bdf8}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:linear-gradient(180deg,#071029 0%, #071a2b 100%); color:#e6eef6;line-height:1.5}
-    .wrap{max-width:980px;margin:28px auto;padding:20px}
-    header{display:flex;gap:20px;align-items:center}
-    .avatar{width:96px;height:96px;border-radius:12px;flex:0 0 96px;object-fit:cover;border:3px solid rgba(255,255,255,0.06)}
-    h1{font-size:1.6rem;margin:0}
-    p.lead{margin:6px 0 0;color:var(--muted)}
-    .actions{margin-left:auto}
-    .btn{display:inline-block;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.04);color:inherit;text-decoration:none;border:1px solid rgba(255,255,255,0.03)}
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-    .hero{margin:18px 0 28px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 6px 20px rgba(2,6,23,0.6)}
+    body {
+      background: #f4f7f9;
+      color: #333;
+      line-height: 1.6;
+    }
 
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-    .card{background:var(--card);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
-    .card h3{margin:0 0 8px;font-size:1.05rem}
-    .card p{margin:0 0 10px;color:var(--muted);font-size:0.95rem}
-    .card .links{display:flex;gap:8px;flex-wrap:wrap}
-    .pill{padding:6px 8px;border-radius:999px;font-size:0.85rem;border:1px solid rgba(255,255,255,0.03);background:rgba(255,255,255,0.02)}
+    header {
+      background: #1e3a8a;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
 
-    footer{margin-top:28px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.02);color:var(--muted);font-size:0.9rem}
+    header h1 {
+      font-size: 2.5rem;
+    }
 
-    @media(min-width:880px){h1{font-size:2rem}}
+    nav {
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #1e3a8a;
+    }
+
+    /* Tarjetas de proyectos */
+    .proyectos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    .card h3 {
+      color: #1e3a8a;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      margin-bottom: 1rem;
+    }
+
+    .card a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: #1e3a8a;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background 0.2s ease;
+    }
+
+    .card a:hover {
+      background: #3b82f6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #1e3a8a;
+      color: #fff;
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <img id="avatar" class="avatar" src="https://github.com/Juanda099.png" alt="Avatar">
-      <div>
-        <h1 id="name">Juanda099</h1>
-        <p class="lead">Desarrollador • Aprendiz • Portafolio en construcción 🚀</p>
-        <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
-          <a id="githubLink" class="btn" href="https://github.com/Juanda099" target="_blank">Perfil en GitHub</a>
-          <a class="btn" href="#contact">Contacto</a>
-        </div>
+  <header>
+    <h1>Portafolio de Juanda099</h1>
+    <p>Estudiante | Desarrollador en formación | GitHub for Education</p>
+    <nav>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <section id="sobre-mi">
+    <h2>Sobre mí</h2>
+    <p>Hola, soy Juanda099. Estoy aprendiendo desarrollo y construyendo proyectos en GitHub. 
+    Aquí podrás ver mis trabajos y avances en programación.</p>
+  </section>
+
+  <section id="proyectos">
+    <h2>Mis Proyectos</h2>
+    <div class="proyectos">
+      <div class="card">
+        <h3>Proyecto 1</h3>
+        <p>Descripción breve del proyecto.</p>
+        <a href="https://github.com/Juanda099" target="_blank">Ver en GitHub</a>
       </div>
-      <div class="actions">
-        <a class="btn" href="#projects">Ver proyectos</a>
+      <div class="card">
+        <h3>Proyecto 2</h3>
+        <p>Descripción breve del proyecto.</p>
+        <a href="https://github.com/Juanda099" target="_blank">Ver en GitHub</a>
       </div>
-    </header>
+      <div class="card">
+        <h3>Proyecto 3</h3>
+        <p>Descripción breve del proyecto.</p>
+        <a href="https://github.com/Juanda099" target="_blank">Ver en GitHub</a>
+      </div>
+    </div>
+  </section>
 
-    <section class="hero" style="margin-top:14px">
-      <strong>Portafolio rápido</strong>
-      <p style="margin:8px 0 0;color:var(--muted)">Esta plantilla carga automáticamente los repositorios públicos de Juanda099 y crea tarjetas con links al código y (si existe) al sitio desplegado.</p>
-    </section>
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>Puedes encontrarme en:</p>
+    <p><a href="https://github.com/Juanda099" target="_blank">GitHub</a></p>
+  </section>
 
-    <main>
-      <section id="projects">
-        <h2 style="margin-top:0">Proyectos</h2>
-        <div id="projectsGrid" class="grid"></div>
-      </section>
-
-      <section id="contact" style="margin-top:22px">
-        <h2>Contacto</h2>
-        <p style="color:var(--muted)">Correo: <span id="email">tu-email@ejemplo.com</span> — Añade tus redes sociales aquí.</p>
-      </section>
-    </main>
-
-    <footer>
-      © <span id="year"></span> Juanda099 — Hecho con ❤️ usando GitHub Pages
-    </footer>
-  </div>
-
-  <script>
-    const GITHUB_USER = 'Juanda099';
-    const SHOW_MAX = 8;
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    function makeCard(repo){
-      const div = document.createElement('div');
-      div.className = 'card';
-      const title = document.createElement('h3');
-      title.textContent = repo.name;
-      const desc = document.createElement('p');
-      desc.textContent = repo.description || 'Sin descripción. Añade una descripción en el README o en la descripción del repo.';
-      const links = document.createElement('div');
-      links.className = 'links';
-      const aRepo = document.createElement('a');
-      aRepo.href = repo.html_url;
-      aRepo.target = '_blank';
-      aRepo.className = 'pill';
-      aRepo.textContent = 'Código';
-      links.appendChild(aRepo);
-      if(repo.homepage){
-        const aLive = document.createElement('a');
-        aLive.href = repo.homepage;
-        aLive.target = '_blank';
-        aLive.className = 'pill';
-        aLive.textContent = 'Sitio (deploy)';
-        links.appendChild(aLive);
-      }
-      const meta = document.createElement('div');
-      meta.style.marginTop = '10px';
-      meta.innerHTML = `<span class="pill">★ ${repo.stargazers_count}</span> <span class="pill">${repo.language || '—'}</span>`;
-      div.appendChild(title);
-      div.appendChild(desc);
-      div.appendChild(links);
-      div.appendChild(meta);
-      return div;
-    }
-
-    async function fetchRepos(){
-      const url = `https://api.github.com/users/${GITHUB_USER}/repos?per_page=100`;
-      const grid = document.getElementById('projectsGrid');
-      grid.innerHTML = '<div class="card">Cargando proyectos…</div>';
-      try{
-        const res = await fetch(url);
-        if(!res.ok) throw new Error('Error al obtener repos: ' + res.status);
-        const repos = await res.json();
-        const filtered = repos.filter(r => !r.fork);
-        filtered.sort((a,b)=> (b.stargazers_count - a.stargazers_count) || (new Date(b.updated_at) - new Date(a.updated_at)) );
-        const top = filtered.slice(0, SHOW_MAX);
-        grid.innerHTML = '';
-        if(top.length === 0) grid.innerHTML = '<div class="card">No se encontraron repositorios públicos. Añade proyectos manualmente.</div>';
-        top.forEach(r => grid.appendChild(makeCard(r)));
-      }catch(err){
-        console.error(err);
-        grid.innerHTML = '<div class="card">Error al cargar proyectos. Revisa tu conexión.</div>';
-      }
-    }
-
-    window.addEventListener('DOMContentLoaded', ()=>{
-      fetchRepos();
-    });
-  </script>
+  <footer>
+    <p>© 2025 Juanda099 - Portafolio personal</p>
+  </footer>
 </body>
 </html>
+
