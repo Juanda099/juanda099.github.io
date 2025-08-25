@@ -4,159 +4,613 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portafolio - Juanda099</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     /* Reset básico */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #3b82f6;
+      --accent: #06b6d4;
+      --dark: #1f2937;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --gray: #6b7280;
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
 
     body {
-      background: #f4f7f9;
-      color: #333;
-      line-height: 1.6;
+      font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+      scroll-behavior: smooth;
     }
 
+    /* Header mejorado */
     header {
-      background: #1e3a8a;
-      color: #fff;
+      background: var(--gradient);
+      color: white;
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="10" cy="50" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      margin: 0 auto 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: white;
+      border: 4px solid rgba(255,255,255,0.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
     header h1 {
-      font-size: 2.5rem;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
     }
 
+    .subtitle {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    /* Navegación moderna */
     nav {
-      margin-top: 1rem;
+      margin-top: 2rem;
     }
 
     nav a {
-      color: #fff;
-      margin: 0 10px;
+      color: white;
+      margin: 0 1.5rem;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.1);
     }
 
     nav a:hover {
-      text-decoration: underline;
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
     }
 
+    /* Secciones */
     section {
-      padding: 2rem;
+      padding: 4rem 2rem;
       max-width: 1200px;
-      margin: auto;
+      margin: 0 auto;
     }
 
     h2 {
       text-align: center;
-      margin-bottom: 1.5rem;
-      color: #1e3a8a;
+      margin-bottom: 3rem;
+      color: var(--primary);
+      font-size: 2.5rem;
+      font-weight: 700;
+      position: relative;
     }
 
-    /* Tarjetas de proyectos */
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* Sobre mí mejorado */
+    .about-content {
+      background: white;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .skill-tag {
+      background: var(--gradient);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Proyectos mejorados */
     .proyectos {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
     }
 
     .card {
-      background: #fff;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient);
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
     }
 
-    .card h3 {
-      color: #1e3a8a;
-      margin-bottom: 0.5rem;
-    }
-
-    .card p {
+    .card-header {
+      display: flex;
+      align-items: center;
       margin-bottom: 1rem;
     }
 
-    .card a {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background: #1e3a8a;
-      color: #fff;
-      border-radius: 6px;
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--gradient);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      margin-right: 1rem;
+    }
+
+    .card h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .card p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .card-footer {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
       text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
       font-size: 0.9rem;
-      transition: background 0.2s ease;
     }
 
-    .card a:hover {
-      background: #3b82f6;
+    .btn-primary {
+      background: var(--gradient);
+      color: white;
     }
 
+    .btn-secondary {
+      background: var(--light);
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .tech-stack {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech {
+      background: var(--light);
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Contacto mejorado */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-item {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .contact-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      margin: 0 auto 1rem;
+    }
+
+    .contact-item h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-item a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
     footer {
       text-align: center;
-      padding: 1rem;
-      background: #1e3a8a;
-      color: #fff;
-      margin-top: 2rem;
+      padding: 2rem;
+      background: var(--dark);
+      color: white;
+      margin-top: 4rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      section {
+        padding: 2rem 1rem;
+      }
+      
+      nav a {
+        margin: 0.5rem;
+        font-size: 0.9rem;
+      }
+      
+      .proyectos {
+        grid-template-columns: 1fr;
+      }
+      
+      .card-footer {
+        flex-direction: column;
+      }
+    }
+
+    /* Animaciones */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .card:nth-child(2) { animation-delay: 0.1s; }
+    .card:nth-child(3) { animation-delay: 0.2s; }
+    .card:nth-child(4) { animation-delay: 0.3s; }
+
+    /* Scroll suave */
+    html {
+      scroll-behavior: smooth;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Portafolio de Juanda099</h1>
-    <p>Estudiante | Desarrollador en formación | GitHub for Education</p>
-    <nav>
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
+    <div class="hero-content">
+      <div class="profile-img">
+        <i class="fas fa-user-graduate"></i>
+      </div>
+      <h1>Juan David</h1>
+      <p class="subtitle">Desarrollador Full Stack en Formación | Estudiante Apasionado por la Tecnología</p>
+      <nav>
+        <a href="#sobre-mi"><i class="fas fa-user"></i> Sobre mí</a>
+        <a href="#proyectos"><i class="fas fa-code"></i> Proyectos</a>
+        <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
+      </nav>
+    </div>
   </header>
 
   <section id="sobre-mi">
     <h2>Sobre mí</h2>
-    <p>Hola, soy Juanda099. Estoy aprendiendo desarrollo y construyendo proyectos en GitHub. 
-    Aquí podrás ver mis trabajos y avances en programación.</p>
+    <div class="about-content">
+      <p>¡Hola! Soy Juan David, un apasionado estudiante de desarrollo de software con gran entusiasmo por crear soluciones innovadoras. Mi objetivo es convertirme en un desarrollador full stack competente, combinando creatividad con habilidades técnicas sólidas.</p>
+      
+      <p>Actualmente estoy explorando diferentes tecnologías y frameworks, construyendo proyectos que me permiten aplicar lo aprendido y enfrentar nuevos desafíos. Me encanta la programación porque cada línea de código es una oportunidad de resolver problemas y crear algo útil.</p>
+      
+      <div class="skills">
+        <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
+        <span class="skill-tag"><i class="fab fa-html5"></i> HTML5</span>
+        <span class="skill-tag"><i class="fab fa-css3"></i> CSS3</span>
+        <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+        <span class="skill-tag"><i class="fab fa-git-alt"></i> Git</span>
+        <span class="skill-tag"><i class="fab fa-github"></i> GitHub</span>
+      </div>
+    </div>
   </section>
 
   <section id="proyectos">
     <h2>Mis Proyectos</h2>
     <div class="proyectos">
       <div class="card">
-        <h3>Proyecto 1</h3>
-        <p>Descripción breve del proyecto.</p>
-        <a href="https://github.com/Juanda099" target="_blank">Ver en GitHub</a>
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-globe"></i>
+          </div>
+          <h3>Aplicación Web Interactiva</h3>
+        </div>
+        <p>Una aplicación web moderna desarrollada con JavaScript vanilla, que incluye funcionalidades dinámicas y una interfaz de usuario intuitiva. Proyecto enfocado en demostrar habilidades de frontend.</p>
+        
+        <div class="tech-stack">
+          <span class="tech">HTML5</span>
+          <span class="tech">CSS3</span>
+          <span class="tech">JavaScript</span>
+          <span class="tech">Responsive Design</span>
+        </div>
+        
+        <div class="card-footer">
+          <a href="https://github.com/Juanda099" class="btn btn-primary" target="_blank">
+            <i class="fab fa-github"></i> Ver Código
+          </a>
+          <a href="#" class="btn btn-secondary" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Demo Live
+          </a>
+        </div>
       </div>
+
       <div class="card">
-        <h3>Proyecto 2</h3>
-        <p>Descripción breve del proyecto.</p>
-        <a href="https://github.com/Juanda099" target="_blank">Ver en GitHub</a>
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>App Móvil Responsiva</h3>
+        </div>
+        <p>Aplicación web progresiva (PWA) optimizada para dispositivos móviles. Incluye funcionalidades offline y está diseñada siguiendo los principios de mobile-first design.</p>
+        
+        <div class="tech-stack">
+          <span class="tech">PWA</span>
+          <span class="tech">Service Workers</span>
+          <span class="tech">Mobile First</span>
+          <span class="tech">CSS Grid</span>
+        </div>
+        
+        <div class="card-footer">
+          <a href="https://github.com/Juanda099" class="btn btn-primary" target="_blank">
+            <i class="fab fa-github"></i> Ver Código
+          </a>
+          <a href="#" class="btn btn-secondary" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Demo Live
+          </a>
+        </div>
       </div>
+
       <div class="card">
-        <h3>Proyecto 3</h3>
-        <p>Descripción breve del proyecto.</p>
-        <a href="https://github.com/Juanda099" target="_blank">Ver en GitHub</a>
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-database"></i>
+          </div>
+          <h3>Sistema de Gestión</h3>
+        </div>
+        <p>Sistema web para gestión de datos con interfaz administrativa. Implementa operaciones CRUD y manejo de estado avanzado, demostrando habilidades de backend y frontend.</p>
+        
+        <div class="tech-stack">
+          <span class="tech">Python</span>
+          <span class="tech">Database</span>
+          <span class="tech">API REST</span>
+          <span class="tech">CRUD</span>
+        </div>
+        
+        <div class="card-footer">
+          <a href="https://github.com/Juanda099" class="btn btn-primary" target="_blank">
+            <i class="fab fa-github"></i> Ver Código
+          </a>
+          <a href="#" class="btn btn-secondary" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Demo Live
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="contacto">
-    <h2>Contacto</h2>
-    <p>Puedes encontrarme en:</p>
-    <p><a href="https://github.com/Juanda099" target="_blank">GitHub</a></p>
+    <h2>¡Conectemos!</h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fab fa-github"></i>
+        </div>
+        <h3>GitHub</h3>
+        <p>Explora mis repositorios y proyectos</p>
+        <a href="https://github.com/Juanda099" target="_blank">@Juanda099</a>
+      </div>
+      
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fab fa-linkedin"></i>
+        </div>
+        <h3>LinkedIn</h3>
+        <p>Conecta profesionalmente</p>
+        <a href="#" target="_blank">Mi perfil profesional</a>
+      </div>
+      
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <h3>Email</h3>
+        <p>Hablemos sobre oportunidades</p>
+        <a href="mailto:tu.email@ejemplo.com">tu.email@ejemplo.com</a>
+      </div>
+      
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fab fa-twitter"></i>
+        </div>
+        <h3>Twitter</h3>
+        <p>Sígueme para actualizaciones</p>
+        <a href="#" target="_blank">@Juanda099</a>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p>© 2025 Juanda099 - Portafolio personal</p>
+    <p>© 2025 Juan David - Desarrollado con pasión y café ☕</p>
+    <p>Construyendo el futuro, una línea de código a la vez</p>
   </footer>
+
+  <script>
+    // Navegación suave
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Animación de aparición al hacer scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observar elementos para animación
+    document.querySelectorAll('.card, .about-content, .contact-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.6s ease';
+      observer.observe(el);
+    });
+
+    // Efecto de typing para el subtítulo
+    const subtitle = document.querySelector('.subtitle');
+    const text = subtitle.textContent;
+    subtitle.textContent = '';
+    
+    let i = 0;
+    const typeWriter = () => {
+      if (i < text.length) {
+        subtitle.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+      }
+    };
+    
+    setTimeout(typeWriter, 1000);
+  </script>
 </body>
 </html>
 
